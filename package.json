@@ -13,7 +13,8 @@
   },
   "scripts": {
     "install": "typings install",
-    "test": "intern-runner config=tests/intern-local"
+    "test": "intern-runner config=tests/intern-local",
+    "build": "grunt"
   },
   "dependencies": {
     "aframe": "^0.3.1",

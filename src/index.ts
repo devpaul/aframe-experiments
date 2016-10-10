@@ -5,13 +5,13 @@
 		baseUrl: '.',
 		packages: [
 			{
-				name: 'app',
+				name: 'src',
 				location: './src'
 			},
 			{
 				name: 'aframe',
 				location: `${ libsDirectory }/aframe`,
-				main: 'aframe.min.js'
+				main: 'aframe.js'
 			},
 			{
 				name: 'dojo-core',
@@ -28,7 +28,14 @@
 		]
 	});
 
-	require([ 'aframe' ], function () {
-		require([ 'app/main' ], function () { });
+	const dependencies = [ 'aframe' ];
+	const appNode = document.querySelector('[run-app]');
+	if (appNode) {
+		const appMid = appNode.getAttribute('run-app');
+		dependencies.unshift(appMid);
+	}
+
+	require(dependencies, function (app) {
+		app && app.startup && app.startup();
 	});
 }());

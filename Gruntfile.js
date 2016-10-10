@@ -21,7 +21,7 @@ var LIBS = [
 	'node_modules/dojo-core',
 	'node_modules/dojo-has',
 	'node_modules/dojo-shim',
-	'node_modules/aframe/dist/aframe.min.js'
+	'node_modules/aframe/dist/aframe.js'
 ];
 
 var LIBINFO = LIBS.map(function (file) {
@@ -107,7 +107,7 @@ module.exports = function (grunt) {
 		skipTests: [ '<%= all %>', '!tests/**/*.ts' ],
 		staticTestFiles: 'tests/**/*.{html,css}',
 		srcDirectory: 'src',
-		siteDirectory: '.',
+		siteDirectory: 'pages',
 		devDirectory: '<%= tsconfig.compilerOptions.outDir %>',
 		distDirectory: 'dist',
 		testDirectory: 'test',
@@ -138,10 +138,10 @@ module.exports = function (grunt) {
 		},
 
 		copy: {
-			staticSiteFiles: {
+			pages: {
 				expand: true,
-				cwd: '.',
-				src: [ '<%= siteDirectory %>/*.html' ],
+				cwd: '<%= siteDirectory %>',
+				src: [ '*.html' ],
 				dest: '<%= targetDirectory %>'
 			},
 			staticTestFiles: {
@@ -164,6 +164,12 @@ module.exports = function (grunt) {
 			},
 			libs: {
 				files: createCopyConfiguration('<%= distDirectory %>/libs/')
+			},
+			assets: {
+				expand: true,
+				cwd: '.',
+				src: [ 'assets/**/*' ],
+				dest: '<%= targetDirectory %>'
 			}
 		},
 
@@ -306,13 +312,25 @@ module.exports = function (grunt) {
 				},
 				files: [ 'Gruntfile.js', 'tsconfig.json', 'typings.json' ]
 			},
+			pages: {
+				files: [ '<%= siteDirectory %>/*.html' ],
+				tasks: [
+					'copy:pages'
+				]
+			},
+			assets: {
+				files: [ 'assets/*/**' ],
+				tasks: [
+					'copy:assets'
+				]
+			},
 			src: {
 				options: {
 					atBegin: true
 				},
-				files: [ '<%= all %>', '<%= staticTestFiles %>' ],
+				files: [ '<%= all %>' ],
 				tasks: [
-					'build-quick'
+					'ts:dev'
 				]
 			}
 		}
@@ -366,7 +384,7 @@ module.exports = function (grunt) {
 	 */
 	grunt.registerTask('build-quick', [
 		'ts:dev',
-		'copy:staticSiteFiles'
+		'copy:pages'
 	]);
 
 	/**
@@ -374,8 +392,9 @@ module.exports = function (grunt) {
 	 */
 	grunt.registerTask('build', [
 		'ts:dev',
-		'copy:staticSiteFiles',
+		'copy:pages',
 		'copy:staticTestFiles',
+		'copy:assets',
 		'symlink:libs',
 		'replace:addIstanbulIgnore'
 	]);
@@ -387,7 +406,7 @@ module.exports = function (grunt) {
 		'settarget:dist',
 		'clean:dist',
 		'ts:dist',
-		'copy:staticSiteFiles',
+		'copy:pages',
 		'copy:staticDistFiles',
 		'copy:libs'
 	]);
