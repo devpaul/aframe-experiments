@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MagicaVoxel</title>
+</head>
+<body>
+<!-- Powered by Dojo -->
+<script src="./libs/dojo-loader/loader.min.js"></script>
+<script src="./src/index.js"></script>
+
+<a-scene>
+	<a-assets>
+		<a-asset-item id="wavey" src="assets/models/voxel/wavey.obj"></a-asset-item>
+		<a-asset-item id="wavel-mtl" src="assets/models/voxel/wavey.mtl"></a-asset-item>
+	</a-assets>
+
+	<a-obj-model src="#wavey" mtl="#wavel-mtl"></a-obj-model>
+	<a-sky color="#9898bf"></a-sky>
+</a-scene>
+</body>
+</html>

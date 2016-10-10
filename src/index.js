@@ -4,13 +4,13 @@
         baseUrl: '.',
         packages: [
             {
-                name: 'app',
+                name: 'src',
                 location: './src'
             },
             {
                 name: 'aframe',
                 location: libsDirectory + "/aframe",
-                main: 'aframe.min.js'
+                main: 'aframe.js'
             },
             {
                 name: 'dojo-core',
@@ -26,8 +26,14 @@
             }
         ]
     });
-    require(['aframe'], function () {
-        require(['app/main'], function () { });
+    var dependencies = ['aframe'];
+    var appNode = document.querySelector('[run-app]');
+    if (appNode) {
+        var appMid = appNode.getAttribute('run-app');
+        dependencies.unshift(appMid);
+    }
+    require(dependencies, function (app) {
+        app && app.startup && app.startup();
     });
 }());
 //# sourceMappingURL=../_debug/index.js.map

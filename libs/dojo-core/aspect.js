@@ -8,9 +8,29 @@
 })(function (require, exports) {
     "use strict";
     var lang_1 = require('./lang');
+    /**
+     * An internal type guard that determines if an value is MapLike or not
+     *
+     * @param value The value to guard against
+     */
+    function isMapLike(value) {
+        return value && typeof value.get === 'function' && typeof value.set === 'function';
+    }
+    /**
+     * A UID for tracking advice ordering
+     */
     var nextId = 0;
+    /**
+     * Internal function that advises a join point
+     *
+     * @param dispatcher The current advice dispatcher
+     * @param type The type of before or after advice to apply
+     * @param advice The advice to apply
+     * @param receiveArguments If true, the advice will receive the arguments passed to the join point
+     * @return The handle that will remove the advice
+     */
     function advise(dispatcher, type, advice, receiveArguments) {
-        var previous = dispatcher[type];
+        var previous = dispatcher && dispatcher[type];
         var advised = {
             id: nextId++,
             advice: advice,
@@ -34,38 +54,44 @@
             }
         }
         else {
-            dispatcher[type] = advised;
+            dispatcher && (dispatcher[type] = advised);
         }
-        advice = previous = null;
+        advice = previous = undefined;
         return lang_1.createHandle(function () {
-            var previous = advised ? advised.previous : null;
-            var next = advised ? advised.next : null;
-            if (!previous && !next) {
-                dispatcher[type] = null;
+            var _a = (advised || {}), _b = _a.previous, previous = _b === void 0 ? undefined : _b, _c = _a.next, next = _c === void 0 ? undefined : _c;
+            if (dispatcher && !previous && !next) {
+                dispatcher[type] = undefined;
             }
             else {
                 if (previous) {
                     previous.next = next;
                 }
                 else {
-                    dispatcher[type] = next;
+                    dispatcher && (dispatcher[type] = next);
                 }
                 if (next) {
                     next.previous = previous;
                 }
             }
             if (advised) {
-                advised.advice = null;
+                delete advised.advice;
             }
-            dispatcher = advised = null;
+            dispatcher = advised = undefined;
         });
     }
+    /**
+     * An internal function that resolves or creates the dispatcher for a given join point
+     *
+     * @param target The target object or map
+     * @param methodName The name of the method that the dispatcher should be resolved for
+     * @return The dispatcher
+     */
     function getDispatcher(target, methodName) {
-        var existing = target[methodName];
+        var existing = isMapLike(target) ? target.get(methodName) : target && target[methodName];
         var dispatcher;
         if (!existing || existing.target !== target) {
-            // no dispatcher
-            target[methodName] = dispatcher = function () {
+            /* There is no existing dispatcher, therefore we will create one */
+            dispatcher = function () {
                 var executionId = nextId;
                 var args = arguments;
                 var results;
@@ -94,6 +120,12 @@
                 }
                 return results;
             };
+            if (isMapLike(target)) {
+                target.set(methodName, dispatcher);
+            }
+            else {
+                target && (target[methodName] = dispatcher);
+            }
             if (existing) {
                 dispatcher.around = {
                     advice: function (target, args) {
@@ -106,13 +138,13 @@
         else {
             dispatcher = existing;
         }
-        target = null;
         return dispatcher;
     }
     /**
      * Attaches "after" advice to be executed after the original method.
      * The advising function will receive the original method's return value and arguments object.
      * The value it returns will be returned from the method when it is called (even if the return value is undefined).
+     *
      * @param target Object whose method will be aspected
      * @param methodName Name of method to aspect
      * @param advice Advising function which will receive the original method's return value and arguments object
@@ -124,6 +156,7 @@
     exports.after = after;
     /**
      * Attaches "around" advice around the original method.
+     *
      * @param target Object whose method will be aspected
      * @param methodName Name of method to aspect
      * @param advice Advising function which will receive the original function
@@ -142,17 +175,17 @@
         }
         dispatcher.around = {
             advice: function (target, args) {
-                return advised ? advised.apply(target, args) : previous && previous.advice ? previous.advice(target, args) : null;
+                return advised ? advised.apply(target, args) : previous && previous.advice && previous.advice(target, args);
             }
         };
-        advice = null;
         return lang_1.createHandle(function () {
-            advised = dispatcher = null;
+            advised = dispatcher = undefined;
         });
     }
     exports.around = around;
     /**
      * Attaches "before" advice to be executed before the original method.
+     *
      * @param target Object whose method will be aspected
      * @param methodName Name of method to aspect
      * @param advice Advising function which will receive the same arguments as the original, and may return new arguments
@@ -166,6 +199,7 @@
      * Attaches advice to be executed after the original method.
      * The advising function will receive the same arguments as the original method.
      * The value it returns will be returned from the method when it is called *unless* its return value is undefined.
+     *
      * @param target Object whose method will be aspected
      * @param methodName Name of method to aspect
      * @param advice Advising function which will receive the same arguments as the original method

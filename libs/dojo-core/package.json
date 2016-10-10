@@ -10,18 +10,18 @@
         "spec": ">=2.0.0-alpha.11 <3.0.0",
         "type": "range"
       },
-      "/Users/pshannon/src/boilerplate/ts-aframe"
+      "/Users/pshannon/src/aframe-experiments"
     ]
   ],
   "_from": "dojo-core@>=2.0.0-alpha.11 <3.0.0",
-  "_id": "dojo-core@2.0.0-alpha.12",
+  "_id": "dojo-core@2.0.0-alpha.13",
   "_inCache": true,
   "_installable": true,
   "_location": "/dojo-core",
   "_nodeVersion": "6.3.0",
   "_npmOperationalInternal": {
     "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/dojo-core-2.0.0-alpha.12.tgz_1472825717983_0.9414192195981741"
+    "tmp": "tmp/dojo-core-2.0.0-alpha.13.tgz_1473259440412_0.8635926004499197"
   },
   "_npmUser": {
     "name": "dojotoolkit",
@@ -41,11 +41,11 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/dojo-core/-/dojo-core-2.0.0-alpha.12.tgz",
-  "_shasum": "8e388f24af83fe2f1ddf564f7d047b2e2dea1608",
+  "_resolved": "https://registry.npmjs.org/dojo-core/-/dojo-core-2.0.0-alpha.13.tgz",
+  "_shasum": "6111effd91013814a321b412b9f0d81df58a77d0",
   "_shrinkwrap": null,
   "_spec": "dojo-core@^2.0.0-alpha.11",
-  "_where": "/Users/pshannon/src/boilerplate/ts-aframe",
+  "_where": "/Users/pshannon/src/aframe-experiments",
   "bugs": {
     "url": "https://github.com/dojo/core/issues"
   },
@@ -77,8 +77,8 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "8e388f24af83fe2f1ddf564f7d047b2e2dea1608",
-    "tarball": "https://registry.npmjs.org/dojo-core/-/dojo-core-2.0.0-alpha.12.tgz"
+    "shasum": "6111effd91013814a321b412b9f0d81df58a77d0",
+    "tarball": "https://registry.npmjs.org/dojo-core/-/dojo-core-2.0.0-alpha.13.tgz"
   },
   "homepage": "http://dojotoolkit.org",
   "license": "BSD-3-Clause",
@@ -105,5 +105,5 @@
     "url": "git+https://github.com/dojo/core.git"
   },
   "scripts": {},
-  "version": "2.0.0-alpha.12"
+  "version": "2.0.0-alpha.13"
 }

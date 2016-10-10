@@ -18,13 +18,31 @@ We hope this is a useful starting place to begin your project <3.
 * `grunt`
 * launch http://localhost/_build/index.html
 
+## Publish to GitHub Pages
+
+This boilerplate supports publishing to a GitHub Pages website. Simply type:
+
+`grunt publish`
+
+Your entire project will be built, all of the libs copied to the `dist` directory, and the `dist` directory
+will be checked into the `gh-pages` to be hosted by GitHub. 
+
+See our boilerplate at [https://devpaul.github.io/ts-dojo-aframe-boilerplate](https://devpaul.github.io/ts-dojo-aframe-boilerplate)
+
 ## TODOs
 
-* Fix TypeScript/Dojo core build issues
-* Add server + proxy
 * Test/Ensure Vive support
+* Add instructions for obtaining supported Vive browsers (FF nightly and Chrome)
+* Add A-Frame (three.js, etc...) typings
+* Add a quickstart getting start w/ development
+* Implement a mobile + https development server + proxy solution w/ instructions
+	* self-signed certs
+	* ngrok
+	* Lets Encrypt + Proxy
+	* localhost
 * Improve Gruntfile neatness
-* Improve dist step: add test task, improve vendor'd node_modules (why is there so many still?)
+* Add some unit tests
+* Add functional testing strategy + examples (maybe adapter pattern?)
 
 ## Grunt Commands
 

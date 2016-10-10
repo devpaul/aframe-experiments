@@ -9,10 +9,10 @@
     "use strict";
     var has_1 = require('dojo-has/has');
     has_1.add('webvr', function () {
-        return 'getVRDisplays' in navigator;
+        return has_1.default('host-browser') && 'getVRDisplays' in navigator;
     });
     has_1.add('gamepad', function () {
-        return 'getGamepads' in navigator;
+        return has_1.default('host-browser') && 'getGamepads' in navigator;
     });
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = has_1.default;

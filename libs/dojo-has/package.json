@@ -10,7 +10,7 @@
         "spec": ">=2.0.0-alpha.3 <3.0.0",
         "type": "range"
       },
-      "/Users/pshannon/src/boilerplate/ts-aframe"
+      "/Users/pshannon/src/aframe-experiments"
     ]
   ],
   "_from": "dojo-has@>=2.0.0-alpha.3 <3.0.0",
@@ -45,7 +45,7 @@
   "_shasum": "9984946f9b599d046e7bdd6bedc5886cbdafa5da",
   "_shrinkwrap": null,
   "_spec": "dojo-has@^2.0.0-alpha.3",
-  "_where": "/Users/pshannon/src/boilerplate/ts-aframe",
+  "_where": "/Users/pshannon/src/aframe-experiments",
   "bugs": {
     "url": "https://github.com/dojo/has/issues"
   },
