@@ -407,6 +407,7 @@ module.exports = function (grunt) {
 		'clean:dist',
 		'ts:dist',
 		'copy:pages',
+		'copy:assets',
 		'copy:staticDistFiles',
 		'copy:libs'
 	]);
