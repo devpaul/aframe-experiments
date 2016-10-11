@@ -10,23 +10,44 @@
     function startup() {
         var scene = document.querySelector('a-scene');
         var sphere = document.querySelector('a-sphere');
+        var properties = ['position', 'rotation', 'scale'];
         if (scene.hasLoaded) {
-            update();
+            initialize();
         }
         else {
-            scene.addEventListener('loaded', update);
+            scene.addEventListener('loaded', initialize);
         }
-        function update() {
-            updateProperty('position');
-            updateProperty('rotation');
-            updateProperty('scale');
+        function initialize() {
+            properties.forEach(function (prop) {
+                attachProperty(prop);
+                updateProperty(prop);
+            });
+        }
+        function attachProperty(id) {
+            var form = document.getElementById(id);
+            form.addEventListener('submit', function (event) {
+                setProperty(id);
+                event.preventDefault();
+                event.stopPropagation();
+            });
+        }
+        function setProperty(id) {
+            var form = document.getElementById(id);
+            var x = form.x.value;
+            var y = form.y.value;
+            var z = form.z.value;
+            sphere.setAttribute(id, {
+                x: x,
+                y: y,
+                z: z
+            });
         }
         function updateProperty(id) {
             var form = document.getElementById(id);
-            var position = sphere.getComputedAttribute(id);
-            form.x.value = position.x;
-            form.y.value = position.y;
-            form.z.value = position.z;
+            var attr = sphere.getComputedAttribute(id);
+            form.x.value = attr.x;
+            form.y.value = attr.y;
+            form.z.value = attr.z;
         }
     }
     exports.startup = startup;
