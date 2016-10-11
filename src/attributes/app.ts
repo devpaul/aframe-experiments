@@ -1,6 +1,6 @@
 export function startup() {
-	var scene: Aframe.Scene = <any> document.querySelector('a-scene');
-	var sphere: Aframe.Entity = <any> document.querySelector('a-sphere');
+	var scene: AFrame.Scene = <any> document.querySelector('a-scene');
+	var sphere: AFrame.Entity = <any> document.querySelector('a-sphere');
 
 	if (scene.hasLoaded) {
 		update();

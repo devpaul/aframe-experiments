@@ -1,3 +1,8 @@
+export interface BounceComponent extends AFrame.Component {
+	speed: number;
+	max: number;
+}
+
 export function startup() {
 	AFRAME.registerComponent('bounce', {
 		init() {
@@ -5,7 +10,7 @@ export function startup() {
 			this.max = 10;
 		},
 
-		tick() {
+		tick(this: BounceComponent) {
 			var position = this.el.getAttribute('position');
 			position.x += this.speed;
 			if (Math.abs(position.x) > this.max) {
