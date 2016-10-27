@@ -202,24 +202,13 @@ module.exports = function (grunt) {
 			},
 			runner: {
 				options: {
-					reporters: [ 'runner', { id: 'LcovHtml', directory: 'html-report' } ]
+					reporters: [ 'Runner', { id: 'LcovHtml', directory: 'html-report' } ]
 				}
 			},
-			local: {
+			ci: {
 				options: {
-					config: '<%= devDirectory %>/tests/intern-local',
-					reporters: [ 'runner', { id: 'LcovHtml', directory: 'html-report' } ]
-				}
-			},
-			client: {
-				options: {
-					runType: 'client',
-					reporters: [ 'Console', { id: 'LcovHtml', directory: 'html-report' } ]
-				}
-			},
-			proxy: {
-				options: {
-					proxyOnly: true
+					config: '<%= devDirectory %>/tests/intern-ci',
+					reporters: [ 'Runner', { id: 'LcovHtml', directory: 'html-report' } ]
 				}
 			}
 		},
@@ -313,12 +302,18 @@ module.exports = function (grunt) {
 				files: [ 'Gruntfile.js', 'tsconfig.json', 'typings.json' ]
 			},
 			pages: {
+				options: {
+					atBegin: true
+				},
 				files: [ '<%= siteDirectory %>/*.html' ],
 				tasks: [
 					'copy:pages'
 				]
 			},
 			assets: {
+				options: {
+					atBegin: true
+				},
 				files: [ 'assets/*/**' ],
 				tasks: [
 					'copy:assets'
