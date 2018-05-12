@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A-frame Boilerplate</title>
+	<style>
+		body, html {
+			margin: 0;
+			padding: 0;
+		}
+
+		#contents {
+			display: flex;
+			min-height: 100vh;
+			flex-direction: column;
+		}
+
+		a-scene {
+			flex: 1;
+		}
+
+		form {
+			display: inline-block;
+		}
+	</style>
+<script type="text/javascript" src="main.aa6b9be3922b1db8f4fd.js"></script></head>
+<body>
+<div id="contents">
+	<a-scene embedded="true">
+		<a-camera></a-camera>
+		<a-sky color="black"></a-sky>
+		<a-sphere bounce="" position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+	</a-scene>
+	<footer>
+		<div>Position:
+			<form id="position">
+				<input name="x">
+				<input name="y">
+				<input name="z">
+				<input type="submit">
+			</form>
+		</div>
+		<div>Rotation:
+			<form id="rotation">
+				<input name="x">
+				<input name="y">
+				<input name="z">
+				<input type="submit">
+			</form>
+		</div>
+		<div>Scale:
+			<form id="scale">
+				<input name="x">
+				<input name="y">
+				<input name="z">
+				<input type="submit">
+			</form>
+		</div>
+	</footer>
+</div>
+
+</body>
+</html>
