@@ -1,0 +1,22 @@
+{
+  "name": "@types/aframe",
+  "version": "0.8.0-pre",
+  "description": "TypeScript typings for A-Frame",
+  "license": "MPL-2.0",
+  "private": true,
+  "types": "./src/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/devpaul/aframe-typings/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devpaul/aframe-typings.git"
+  },
+  "scripts": {
+    "pretty": "prettier --write src/**"
+  },
+  "dependencies": {
+    "@types/three": "^0.91.10",
+    "@types/tween.js": "^16.9.0"
+  }
+}

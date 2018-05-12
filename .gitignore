@@ -2,10 +2,11 @@
 /src/*.js
 dist
 _build
-/node_modules
+node_modules
 .baseDir.ts
 .tsconfig*.json
 html-report
 typings
 .grunt
 dist
+lerna-debug.log
