@@ -3,6 +3,7 @@
   "version": "0.8.0-pre",
   "description": "TypeScript typings for A-Frame",
   "license": "MPL-2.0",
+  "private": true,
   "types": "./src/index.d.ts",
   "bugs": {
     "url": "https://github.com/devpaul/aframe-typings/issues"

@@ -1,6 +1,12 @@
 {
 	"compilerOptions": {
+		"lib": [
+			"dom",
+			"es2015",
+			"esnext.asynciterable"
+		],
 		"declaration": false,
+		"downlevelIteration": true,
 		"module": "es6",
 		"noImplicitAny": true,
 		"outDir": "_build/",
