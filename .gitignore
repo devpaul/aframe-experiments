@@ -9,3 +9,4 @@ html-report
 typings
 .grunt
 dist
+lerna-debug.log
