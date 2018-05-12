@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A-frame Boilerplate</title>
+<script type="text/javascript" src="main.4aa33859cbf2b29d706f.js"></script></head>
+<body>
+<!-- Powered by Dojo -->
+<script src="./libs/dojo-loader/loader.min.js"></script>
+<script src="./src/index.js" run-app="src/bouncing/app"></script>
+
+<a-scene>
+	<a-assets>
+		<img id="corbin" src="./assets/images/corbin.jpg">
+	</a-assets>
+	<a-sky color="black"></a-sky>
+	<a-sphere bounce="" position="0 1.25 -5" radius="1.25" material="src: #corbin"></a-sphere>
+</a-scene>
+</body>
+</html>

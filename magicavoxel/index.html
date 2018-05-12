@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MagicaVoxel</title>
+<script type="text/javascript" src="main.5674c2c459e72edc094c.js"></script></head>
+<body>
+<a-scene>
+	<a-assets>
+		<img id="skybox" src="assets/images/stars.png">
+		<img id="grass" src="assets/images/Grass0130_1_270.jpg">
+		<a-asset-item id="castle" src="assets/models/castle/castle.obj"></a-asset-item>
+		<a-asset-item id="castle-mtl" src="assets/models/castle/castle.mtl"></a-asset-item>
+		<a-asset-item id="knight" src="assets/models/knight/chr_knight.obj"></a-asset-item>
+		<a-asset-item id="knight-mtl" src="assets/models/knight/chr_knight.mtl"></a-asset-item>
+		<a-asset-item id="tree" src="assets/models/tree/tree.obj"></a-asset-item>
+		<a-asset-item id="tree-mtl" src="assets/models/tree/tree.mtl"></a-asset-item>
+	</a-assets>
+
+	<a-camera position="0 2 0"></a-camera>
+	<a-sky src="#skybox"></a-sky>
+	<a-obj-model src="#castle" mtl="#castle-mtl" position="0 0 -20" scale="0.5 0.5 0.5" rotation="0 0 0"></a-obj-model>
+	<a-obj-model id="knight-obj" src="#knight" mtl="#knight-mtl" position="0 0 -14.10" rotation="0 0 0" scale="0.1 0.1 0.1"></a-obj-model>
+	<a-obj-model src="#tree" mtl="#tree-mtl" position="12.21 0.07 -7.44" scale="0.5 0.5 0.5" rotation="0 -15 0"></a-obj-model>
+	<a-obj-model src="#tree" mtl="#tree-mtl" position="-12.89 0.07 -2.74" scale="0.5 0.5 0.5" rotation="0 100 0"></a-obj-model>
+	<a-obj-model src="#tree" mtl="#tree-mtl" position="-8.22 0.07 -6.76" scale="0.5 0.5 0.5" rotation="0 20 0"></a-obj-model>
+	<a-obj-model src="#tree" mtl="#tree-mtl" position="-8.22 0.07 -6.76" scale="0.5 0.5 0.5" rotation="0 20 0"></a-obj-model>
+	<a-plane material="shader:flat;color:green;repeat:100 100;src:#grass" width="100" height="100" rotation="-90 0 0"></a-plane>
+</a-scene>
+</body>
+</html>
