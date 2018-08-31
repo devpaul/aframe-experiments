@@ -10,7 +10,7 @@
 		"noImplicitAny": true,
 		"outDir": "_build/",
 		"paths": {
-			"aframe" : ["../@types/aframe"]
+			"aframe" : ["../../@types/aframe"]
 		},
 		"removeComments": false,
 		"sourceMap": true,

@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"baseUrl": ".",
+		"baseUrl": "./",
 		"module": "umd",
 		"outDir": "./_build",
 		"types": ["intern"],
@@ -9,7 +9,7 @@
 		},
 		"skipLibCheck": true
 	},
-	"extends": "../../../tsconfig.json",
+	"extends": "../../tsconfig.json",
 	"include": [
 		"./unit/*.ts"
 	]

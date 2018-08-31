@@ -1,36 +1,30 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
-import { cp, mkdir } from 'shelljs';
-import { distPath, ExperimentMeta, experimentsPath, getExperiments } from './common';
+import {readFileSync, writeFileSync} from 'fs';
+import {join} from 'path';
+import {cp, mkdir} from 'shelljs';
+import {distPath, experimentsPath, getProjects, PackageJsonMetadata} from './common';
 
-function createIndex(experiments: ExperimentMeta[]) {
+function createIndex(experiments: PackageJsonMetadata[]) {
 	const indexPath = join(__dirname, './assets/index.html');
 	const index = String(readFileSync(indexPath));
 	const htmlLinks = experiments.map((experiment) => {
-		if (!experiment.isPrivate) {
-			return `<a href="${ experiment.name }">${ experiment.name }</a>`;
-		}
-		return '';
+		return `<a href="${ experiment.name }">${ experiment.name }</a>`;
 	});
 	return index.replace('${experiments}', htmlLinks.join(''));
 }
 
-function copyExperiments(experiments: ExperimentMeta[]) {
-	experiments.forEach((experiment) => {
-		if (experiment.isPrivate) {
-			return;
-		}
-
-		const source = join(experimentsPath, experiment.name, 'dist');
-		const dest = join(distPath, experiment.name);
-		console.log(`Copying ${ experiment.name }`);
-		cp('-R', source, dest);
-	});
+function copyExperiment(experiment: PackageJsonMetadata) {
+	const source = join(experiment.dir, 'dist');
+	const dest = join(distPath, experiment.name);
+	console.log(`Copying ${ experiment.name }`);
+	cp('-R', source, dest);
 }
 
-mkdir('-p', distPath);
+(async function() {
+	const experiments = (await getProjects(experimentsPath)).filter(pack => pack.json.private !== true);
 
-getExperiments().then((experiments) => {
-	copyExperiments(experiments);
+	mkdir('-p', distPath);
+	for (let experiment of experiments) {
+		copyExperiment(experiment);
+	}
 	writeFileSync(join(distPath, 'index.html'), createIndex(experiments));
-});
+})();

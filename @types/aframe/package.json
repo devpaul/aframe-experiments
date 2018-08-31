@@ -13,12 +13,15 @@
     "url": "https://github.com/devpaul/aframe-typings.git"
   },
   "scripts": {
-    "build": "../../../node_modules/.bin/tsc",
+    "test": "tsc",
     "pretty": "prettier --write index.d.ts"
   },
   "dependencies": {
     "@types/three": "^0.92.18",
     "@types/tween.js": "^16.9.0",
     "@types/webvr-api": "^0.0.34"
+  },
+  "devDependencies": {
+    "typescript": "^2.8.4"
   }
 }
