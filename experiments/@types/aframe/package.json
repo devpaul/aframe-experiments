@@ -4,7 +4,7 @@
   "description": "TypeScript typings for A-Frame",
   "license": "MPL-2.0",
   "private": true,
-  "types": "./src/index.d.ts",
+  "types": "./index.d.ts",
   "bugs": {
     "url": "https://github.com/devpaul/aframe-typings/issues"
   },
@@ -16,7 +16,8 @@
     "pretty": "prettier --write src/**"
   },
   "dependencies": {
-    "@types/three": "^0.91.10",
-    "@types/tween.js": "^16.9.0"
+    "@types/three": "^0.92.18",
+    "@types/tween.js": "^16.9.0",
+    "@types/webvr-api": "^0.0.34"
   }
 }

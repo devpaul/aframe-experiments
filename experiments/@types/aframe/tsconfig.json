@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"noUnusedLocals": false
 	},
-	"extends": "../../tsconfig.json",
+	"extends": "../../../tsconfig.json",
 	"include": [
 		"./src"
 	]

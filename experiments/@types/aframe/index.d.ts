@@ -383,8 +383,8 @@ export interface AFrame {
 	): SystemConstructor<T>;
 }
 
-export const AFrame: AFrame;
-export default AFrame;
+export const aframe: AFrame;
+export default aframe;
 
 // Globals
 declare var hasNativeWebVRImplementation: boolean;

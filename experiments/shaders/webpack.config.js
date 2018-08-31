@@ -22,9 +22,9 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist')
 	},
 	plugins: [
-		new CopyWebpackPlugin([
-			{ from: 'assets', to: 'assets' }
-		]),
+		// new CopyWebpackPlugin([
+		// 	{ from: 'assets', to: 'assets' }
+		// ]),
 		new HtmlWebpackPlugin({
 			inject: 'head',
 			template: './src/index.html'

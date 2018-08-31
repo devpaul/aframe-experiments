@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"baseUrl": "."
 	},
 	"extends": "../../tsconfig.json",
 	"include": [

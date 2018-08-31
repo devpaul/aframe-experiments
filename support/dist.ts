@@ -1,38 +1,7 @@
-import { readdir, readFile, readFileSync, writeFile, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { cp, mkdir } from 'shelljs';
-
-const experimentsPath = join(__dirname, '../experiments');
-const distPath = join(__dirname, '../dist');
-
-interface ExperimentMeta {
-	description: string;
-	name: string;
-	path: string;
-	isPrivate: boolean;
-}
-
-function getExperiments(): Promise<ExperimentMeta[]> {
-	return new Promise((resolve, reject) => {
-		readdir(experimentsPath, (err, items: string[]) => {
-			if (err) {
-				return reject(err);
-			}
-
-			resolve(items.map((experiment) => {
-				const path = join(experimentsPath, experiment, 'package.json');
-				const packageJson = require(path);
-
-				return {
-					description: <string> packageJson.description,
-					name: <string> packageJson.name,
-					path,
-					isPrivate: <boolean> Boolean(packageJson.private)
-				};
-			}));
-		});
-	});
-}
+import { distPath, ExperimentMeta, experimentsPath, getExperiments } from './common';
 
 function createIndex(experiments: ExperimentMeta[]) {
 	const indexPath = join(__dirname, './assets/index.html');

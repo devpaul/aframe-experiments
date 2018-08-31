@@ -5,11 +5,13 @@
 			"es2015",
 			"esnext.asynciterable"
 		],
-		"declaration": false,
 		"downlevelIteration": true,
 		"module": "es6",
 		"noImplicitAny": true,
 		"outDir": "_build/",
+		"paths": {
+			"aframe" : ["../@types/aframe"]
+		},
 		"removeComments": false,
 		"sourceMap": true,
 		"target": "es5",

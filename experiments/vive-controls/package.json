@@ -12,7 +12,5 @@
   "dependencies": {
     "aframe": "^0.8.2"
   },
-  "devDependencies": {
-    "@types/aframe": "^0.8.0-pre"
-  }
+  "devDependencies": {}
 }
