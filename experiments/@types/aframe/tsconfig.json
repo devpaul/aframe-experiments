@@ -1,9 +1,14 @@
 {
 	"compilerOptions": {
+		"lib": [
+			"dom",
+			"es2015"
+		],
+		"module": "umd",
+		"outDir": "_build",
 		"noUnusedLocals": false
 	},
-	"extends": "../../../tsconfig.json",
 	"include": [
-		"./src"
+		"./index.d.ts"
 	]
 }

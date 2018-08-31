@@ -1,20 +1,21 @@
-// Type definitions for AFRAME 0.7
+// Type definitions for AFRAME 0.8
 // Project: https://aframe.io/
 // Definitions by: Paul Shannon <https://github.com/devpaul>
 //                 Roberto Ritger <https://github.com/bertoritger>
 //                 Trygve Wastvedt <https://github.com/twastvedt>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.7
+// TypeScript Version: 2.8
 
 /**
- * Extended tests available at https://github.com/devpaul/aframe-typings.git
+ * Extended tests and examples available at https://github.com/devpaul/aframe-experiments.git
  */
 
-/// <reference types="three" />
 /// <reference types="tween.js" />
 
-export type THREELib = any;
-export type TWEENLib = typeof TWEEN;
+import * as THREE from 'three';
+
+type TweenLib = typeof TWEEN;
+type ThreeLib = typeof THREE;
 
 interface ObjectMap<T = any> {
 	[key: string]: T;
@@ -355,8 +356,8 @@ export interface Utils {
 
 // Default export
 export interface AFrame {
-	THREE: THREELib;
-	TWEEN: TWEENLib;
+	THREE: ThreeLib;
+	TWEEN: TweenLib;
 	AEntity: Entity;
 	ANode: ANode;
 	AScene: Scene;
