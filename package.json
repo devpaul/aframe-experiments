@@ -12,9 +12,12 @@
     "url": "https://github.com/devpaul/aframe-experiments.git"
   },
   "scripts": {
-    "buildall": "ts-node --project support/tsconfig.json ./support/build",
+    "buildall": "ts-node --project support/tsconfig.json ./support/run build",
+    "cleanall": "ts-node --project support/tsconfig.json ./support/run clean",
     "dist": "ts-node --project support/tsconfig.json ./support/dist",
-    "installall": "ts-node --project support/tsconfig.json ./support/install"
+    "installall": "ts-node --project support/tsconfig.json ./support/npm install",
+    "publish": "ts-node --project support/tsconfig.json ./support/publish",
+    "test": "ts-node --project support/tsconfig.json ./support/run test"
   },
   "devDependencies": {
     "@types/shelljs": "^0.7.9",

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A-Frame Hello World Example",
   "main": "src/index.ts",
+  "private": true,
   "scripts": {
     "build": "../../node_modules/.bin/ts-node -O \"{ \\\"module\\\": \\\"commonjs\\\" }\" ../../node_modules/.bin/webpack",
     "test": "echo \"Error: no test specified\" && exit 1"

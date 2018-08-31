@@ -6,7 +6,8 @@
 		],
 		"module": "umd",
 		"outDir": "_build",
-		"noUnusedLocals": false
+		"noUnusedLocals": false,
+		"typeRoots": ["node_modules/@types"]
 	},
 	"include": [
 		"./index.d.ts"
