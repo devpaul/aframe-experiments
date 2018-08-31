@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"module": "umd",
+		"outDir": "./_build",
+		"types": ["intern"],
+		"paths": {
+			"aframe" : ["../aframe"]
+		},
+		"skipLibCheck": true
+	},
+	"extends": "../../../tsconfig.json",
+	"include": [
+		"./unit/*.ts"
+	]
+}

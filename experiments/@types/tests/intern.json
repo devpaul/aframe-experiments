@@ -1,0 +1,12 @@
+{
+	"environments": "chrome",
+	"suites": "_build/**/*.js",
+	"loader": {
+		"script": "dojo2",
+		"options": {
+			"packages": [
+				{ "name": "aframe", "location": "./node_modules/aframe/dist", "main": "aframe-master"}
+			]
+		}
+	}
+}
