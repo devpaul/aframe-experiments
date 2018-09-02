@@ -4,8 +4,7 @@ node_js:
 - '8'
 addons:
 	chrome: stable
-env:
 install:
-- travis_retry npm install
+- npm install
 script:
 - npm run ci
