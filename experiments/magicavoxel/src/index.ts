@@ -1,3 +1,3 @@
-import aframe from 'aframe';
+import { version } from 'aframe';
 
-console.log(aframe.version);
+console.log(version);

@@ -1,7 +1,8 @@
 {
   "name": "shaders",
   "version": "1.0.0",
-  "description": "Working with shaders",
+  "description": "THIS IS A WIP -- Working with shaders",
+  "private": true,
   "main": "src/index.ts",
   "scripts": {
     "build": "webpack",

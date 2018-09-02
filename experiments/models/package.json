@@ -1,7 +1,7 @@
 {
   "name": "models",
   "version": "1.0.0",
-  "description": "Animating gltf models",
+  "description": "Loading and Animating gltf models",
   "main": "src/index.ts",
   "scripts": {
     "build": "webpack",
