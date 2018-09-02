@@ -1,4 +1,4 @@
-import { ComponentConstructor, Entity } from 'aframe';
+import { ComponentConstructor, Entity, registerComponent, components } from 'aframe';
 
 const { describe, beforeEach, afterEach, it } = intern.getInterface('bdd');
 const { expect } = intern.getPlugin('chai');
@@ -8,13 +8,13 @@ describe('components', () => {
 
 	afterEach(() => {
 		if (Component) {
-			delete aframe.components[Component.prototype.name];
+			delete components[Component.prototype.name];
 		}
 	});
 
 	describe('basic component', () => {
 		beforeEach(() => {
-			Component = aframe.registerComponent('test', {});
+			Component = registerComponent('test', {});
 		});
 
 		it('has the expected shape', () => {
