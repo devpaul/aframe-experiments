@@ -1,11 +1,11 @@
-import aframe, { Component } from 'aframe';
+import { Component, registerComponent } from 'aframe';
 
 export interface BounceComponent extends Component {
 	speed: number;
 	max: number;
 }
 
-aframe.registerComponent('bounce', {
+registerComponent('bounce', {
 	init() {
 		this.speed = 0.02;
 		this.max = 10;

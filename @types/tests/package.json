@@ -1,16 +1,16 @@
 {
   "name": "@types/aframe",
   "version": "0.8.0-pre",
-  "description": "TypeScript typings for A-Frame",
+  "description": "Tests for A-Frame typings validate AFrame vs typing assumptions",
   "license": "MPL-2.0",
   "private": true,
   "types": "./index.d.ts",
   "bugs": {
-    "url": "https://github.com/devpaul/aframe-typings/issues"
+    "url": "https://github.com/devpaul/aframe-experiments/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/devpaul/aframe-typings.git"
+    "url": "https://github.com/devpaul/aframe-experiments.git"
   },
   "scripts": {
     "build": "tsc",

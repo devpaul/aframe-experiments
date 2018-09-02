@@ -25,3 +25,8 @@ The root `package.json` has scripts that support building everything. To generat
 * `npm run buildall`
 * `npm run dist`
 
+## Future Experiments
+
+* Custom shaders
+* Vive controls
+* Rigging w/ vive controls

@@ -1,7 +1,7 @@
-import aframe, { Scene, Entity } from 'aframe';
+import {Scene, Entity, version} from 'aframe';
 
 function init() {
-	console.log(aframe.version);
+	console.log(version);
 	const scene: Scene = <any> document.querySelector('a-scene');
 	const sphere: Entity = <any> document.querySelector('a-sphere');
 	const properties = [ 'position', 'rotation', 'scale' ];

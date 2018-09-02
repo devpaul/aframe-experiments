@@ -1,13 +1,13 @@
 {
   "name": "attributes",
   "version": "1.0.0",
-  "description": "Experiment using magicavoxel objs",
+  "description": "Experiment AFrame properties -- Aframe in a div",
   "main": "src/index.ts",
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Paul Shannon",
   "license": "MPL-2.0",
   "dependencies": {
     "aframe": "^0.8.2"
