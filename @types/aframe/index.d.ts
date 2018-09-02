@@ -354,6 +354,8 @@ export interface Utils {
 	): (t: number, dt: number) => void;
 }
 
+export function registerComponent<T>(name: string, component: T): ComponentConstructor<T>;
+
 // Default export
 export interface AFrame {
 	THREE: ThreeLib;
@@ -384,8 +386,7 @@ export interface AFrame {
 	): SystemConstructor<T>;
 }
 
-export const aframe: AFrame;
-export default aframe;
+export const components: AFrame['components'];
 
 // Globals
 declare var hasNativeWebVRImplementation: boolean;
