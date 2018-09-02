@@ -1,10 +1,9 @@
 sudo: false
 language: node_js
+cache:
+  directories:
+    - node_modules
 node_js:
-- '8'
-addons:
-	chrome: stable
-install:
-- npm install
+  - '8'
 script:
-- npm run ci
+  - npm run ci
