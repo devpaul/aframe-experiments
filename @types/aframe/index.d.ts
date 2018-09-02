@@ -354,21 +354,28 @@ export interface Utils {
 	): (t: number, dt: number) => void;
 }
 
-export function registerComponent<T>(name: string, component: T): ComponentConstructor<T>;
-
-// Default export
+// root export
 export interface AFrame {
-	THREE: ThreeLib;
-	TWEEN: TweenLib;
+	AComponent: Component;
 	AEntity: Entity;
 	ANode: ANode;
 	AScene: Scene;
+
 	components: ObjectMap<ComponentDescriptor>;
 	geometries: ObjectMap<GeometryDescriptor>;
-	primitives: ObjectMap<Entity>;
+	primitives: {
+		getMeshMixin(): {
+			defaultComponents: { material: object },
+			mappings: { [key: string ]: any } // TODO improve any type
+		}
+		primitives: ObjectMap<Entity>;
+	};
+	scenes: Scene[];
 	schema: SchemaUtils;
 	shaders: ObjectMap<ShaderDescriptor>;
 	systems: ObjectMap<SystemConstructor>;
+	THREE: ThreeLib;
+	TWEEN: TweenLib;
 	utils: Utils;
 	version: string;
 
@@ -386,24 +393,48 @@ export interface AFrame {
 	): SystemConstructor<T>;
 }
 
+// module.exports
+export const AComponent: AFrame['AComponent'];
+export const AEntity: AFrame['AEntity'];
+export const ANode: AFrame['ANode'];
+export const AScene: AFrame['AScene'];
 export const components: AFrame['components'];
+export const geometries: AFrame['geometries'];
+export const primitives: AFrame['primitives'];
+export const scenes: AFrame['scenes'];
+export const schema: AFrame['schema'];
+export const shaders: AFrame['shaders'];
+export const systems: AFrame['systems'];
+export const THREE: AFrame['THREE'];
+export const TWEEN: AFrame['TWEEN'];
+export const utils: AFrame['utils'];
+export const version: AFrame['version'];
+export const registerComponent: AFrame['registerComponent'];
+export const registerElement: AFrame['registerElement'];
+export const registerGeometry: AFrame['registerGeometry'];
+export const registerPrimitive: AFrame['registerPrimitive'];
+export const registerShader: AFrame['registerShader'];
+export const registerSystem: AFrame['registerSystem'];
 
 // Globals
 declare var hasNativeWebVRImplementation: boolean;
 
+// global exports
 declare global {
 	namespace AFRAME {
-		const THREE: AFrame['THREE'];
-		const TWEEN: AFrame['TWEEN'];
+		const AComponent: AFrame['AComponent'];
 		const AEntity: AFrame['AEntity'];
 		const ANode: AFrame['ANode'];
 		const AScene: AFrame['AScene'];
 		const components: AFrame['components'];
 		const geometries: AFrame['geometries'];
 		const primitives: AFrame['primitives'];
+		const scenes: AFrame['scenes'];
 		const schema: AFrame['schema'];
 		const shaders: AFrame['shaders'];
 		const systems: AFrame['systems'];
+		const THREE: AFrame['THREE'];
+		const TWEEN: AFrame['TWEEN'];
 		const utils: AFrame['utils'];
 		const version: string;
 
