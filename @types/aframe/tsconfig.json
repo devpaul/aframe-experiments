@@ -11,17 +11,10 @@
 		"noImplicitThis": true,
 		"strictNullChecks": true,
 		"strictFunctionTypes": true,
-		"baseUrl": "../",
-		"typeRoots": [
-			"../",
-			"node_modules/@types"
-		],
-		"types": [],
 		"noEmit": true,
 		"forceConsistentCasingInFileNames": true
 	},
 	"files": [
-		"index.d.ts",
-		"aframe-tests.ts"
+		"index.d.ts"
 	]
 }

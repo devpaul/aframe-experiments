@@ -32,7 +32,7 @@ describe('entity', () => {
 	let entity: Entity;
 
 	beforeEach(() => {
-		entity = <any> document.createElement('a-entity');
+		entity = <any>document.createElement('a-entity');
 	});
 
 	describe('entity is not attached to a scene', () => {
@@ -46,9 +46,9 @@ describe('entity', () => {
 		let scene: Scene;
 
 		beforeEach(() => {
-			return new Promise(function (resolve) {
-				scene = <any> document.createElement('a-scene');
-				scene.addEventListener('renderstart', function () {
+			return new Promise(function(resolve) {
+				scene = <any>document.createElement('a-scene');
+				scene.addEventListener('renderstart', function() {
 					resolve();
 				});
 				document.body.appendChild(scene);
