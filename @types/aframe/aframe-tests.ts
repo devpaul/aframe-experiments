@@ -97,13 +97,7 @@ AFRAME.registerSystem('test-component', testSystem);
 
 // Register Custom Geometry
 
-interface TestGeometry extends Geometry {
-	schema: MultiPropertySchema<{
-		groupIndex: number;
-	}>;
-}
-
-AFRAME.registerGeometry<TestGeometry>('a-test-geometry', {
+AFRAME.registerGeometry('a-test-geometry', {
 	schema: {
 		groupIndex: { default: 0 }
 	},

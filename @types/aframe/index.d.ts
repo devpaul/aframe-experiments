@@ -189,15 +189,13 @@ export interface EntityEventMap {
 	schemachanged: DetailEvent<{ componentName: string }>;
 }
 
-export interface Geometry {
+export interface Geometry<T = any> {
+	data: T;
 	name: string;
 	geometry: THREE.Geometry;
 	schema: Schema<any>;
 
-	init(data: { [P in keyof this['schema']]: any }): void;
-	// Would like the above to be:
-	//  init?(this: this, data?: { [P in keyof T['schema']]: T['schema'][P]['default'] } ): void;
-	//  I think this is prevented by the following issue: https://github.com/Microsoft/TypeScript/issues/21760.
+	init(data: any): void;
 }
 
 export interface GeometryConstructor<T extends object = object> {
@@ -344,7 +342,7 @@ export interface Utils {
 // Definitions
 // used as mixins to register functions to create classes (newable functions) in A-Frame
 export type ComponentDefinition<T extends object = object> = T & Partial<Component>;
-export type GeometryDefinition<T extends object = object> = T & Partial<Geometry>;
+export type GeometryDefinition<T extends object = object, U = any> = T & Partial<Geometry<U>>;
 export type NodeDefinition<T extends object = object> = T & Partial<ANode>;
 export interface PrimitiveDefinition {
 	defaultComponents?: any; // TODO cleanup type
