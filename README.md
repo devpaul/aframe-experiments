@@ -1,5 +1,7 @@
 # A-Frame Experiments
 
+[![Build Status](https://travis-ci.org/devpaul/aframe-experiments.svg?branch=master)](https://travis-ci.org/devpaul/aframe-experiments)
+
 See the experiments on our [GitHub Page](https://devpaul.github.io/aframe-experiments).
 
 <img src="./docs/magicavoxel-screen.png" style="width: 100%">

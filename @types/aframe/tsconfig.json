@@ -1,15 +1,27 @@
 {
 	"compilerOptions": {
+		"module": "commonjs",
 		"lib": [
+			"es5",
 			"dom",
-			"es2015"
+			"es2015.iterable",
+			"es2015.promise"
 		],
-		"module": "umd",
-		"outDir": "_build",
-		"noUnusedLocals": false,
-		"typeRoots": ["node_modules/@types"]
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"baseUrl": "../",
+		"typeRoots": [
+			"../",
+			"node_modules/@types"
+		],
+		"types": [],
+		"noEmit": true,
+		"forceConsistentCasingInFileNames": true
 	},
-	"include": [
-		"./index.d.ts"
+	"files": [
+		"index.d.ts",
+		"aframe-tests.ts"
 	]
 }

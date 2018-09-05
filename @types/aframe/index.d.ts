@@ -14,8 +14,8 @@
 
 import * as THREE from 'three';
 
-type TweenLib = typeof TWEEN;
 type ThreeLib = typeof THREE;
+type TweenLib = typeof TWEEN;
 
 interface ObjectMap<T = any> {
 	[key: string]: T;
@@ -82,7 +82,7 @@ export interface Component<T extends object = any, S extends System = System> {
 	flushToDOM(): void;
 }
 
-export interface ComponentConstructor<T> {
+export interface ComponentConstructor<T extends object> {
 	new (el: Entity, attrValue: string, id: string): T & Component;
 	prototype: T & {
 		name: string;
@@ -200,11 +200,9 @@ export interface Geometry {
 	//  I think this is prevented by the following issue: https://github.com/Microsoft/TypeScript/issues/21760.
 }
 
-export interface GeometryConstructor<T extends Geometry> {
-	new (): T;
+export interface GeometryConstructor<T extends object = object> {
+	new (): T & Geometry;
 }
-
-export type GeometryDefinition<T extends Geometry = Geometry> = Partial<T>;
 
 export interface GeometryDescriptor<T extends Geometry = Geometry> {
 	Geometry: GeometryConstructor<T>;
@@ -214,13 +212,6 @@ export interface GeometryDescriptor<T extends Geometry = Geometry> {
 export type MultiPropertySchema<T extends object> = {
 	[P in keyof T]: SinglePropertySchema<T[P]> | T[P]
 };
-
-export interface PrimitiveDefinition {
-	defaultComponents?: any; // TODO cleanup type
-	deprecated?: boolean;
-	mappings?: any; // TODO cleanup type
-	transforms?: any; // TODO cleanup type
-}
 
 export type PropertyTypes =
 	| 'array'
@@ -285,11 +276,9 @@ export interface Shader {
 	update(oldData: this['data']): void;
 }
 
-export interface ShaderConstructor<T extends Shader> {
+export interface ShaderConstructor<T extends object> {
 	new (): T;
 }
-
-export type ShaderDefinition<T extends Shader = Shader> = Partial<T>;
 
 export interface ShaderDescriptor<T extends Shader = Shader> {
 	Shader: ShaderConstructor<T>;
@@ -303,7 +292,7 @@ export interface SinglePropertySchema<T> {
 	stringify?(value: T): string;
 }
 
-export interface System<T extends object = object> {
+export interface System<T extends object = any> {
 	data: T;
 	schema: Schema<T>;
 	init(): void;
@@ -312,11 +301,9 @@ export interface System<T extends object = object> {
 	tick?(t: number, dt: number): void;
 }
 
-export interface SystemConstructor<T extends System = System> {
-	new (scene: Scene): T;
+export interface SystemConstructor<T extends object = object> {
+	new (scene: Scene): T & System;
 }
-
-export type SystemDefinition<T extends System = System> = Partial<T>;
 
 export interface Utils {
 	coordinates: {
@@ -354,6 +341,23 @@ export interface Utils {
 	): (t: number, dt: number) => void;
 }
 
+// Definitions
+// used as mixins to register functions to create classes (newable functions) in A-Frame
+export type ComponentDefinition<T extends object = object> = T & Partial<Component>;
+export type GeometryDefinition<T extends object = object> = T & Partial<Geometry>;
+export type NodeDefinition<T extends object = object> = T & Partial<ANode>;
+export interface PrimitiveDefinition {
+	defaultComponents?: any; // TODO cleanup type
+	deprecated?: boolean;
+	mappings?: any; // TODO cleanup type
+	transforms?: any; // TODO cleanup type
+}
+export interface MinimalShaderDefinition {
+	schema: Shader['schema'];
+}
+export type ShaderDefinition<T extends object = MinimalShaderDefinition & object> = T & Partial<Shader>;
+export type SystemDefinition<T extends object = object> = T & Partial<System>;
+
 // root export
 export interface AFrame {
 	AComponent: Component;
@@ -379,15 +383,15 @@ export interface AFrame {
 	utils: Utils;
 	version: string;
 
-	registerComponent<T>(name: string, component: T): ComponentConstructor<T>;
-	registerElement(name: string, element: ANode): void;
-	registerGeometry<T extends Geometry>(
+	registerComponent<T extends object>(name: string, component: ComponentDefinition<T>): ComponentConstructor<T>;
+	registerElement<T extends object>(name: string, element: NodeDefinition<T>): void;
+	registerGeometry<T extends object>(
 		name: string,
 		geometry: GeometryDefinition<T>
 	): GeometryConstructor<T>;
 	registerPrimitive(name: string, primitive: PrimitiveDefinition): void;
-	registerShader<T extends Shader>(name: string, shader: T): ShaderConstructor<T>;
-	registerSystem<T extends System>(
+	registerShader<T extends MinimalShaderDefinition & object>(name: string, shader: ShaderDefinition<T>): ShaderConstructor<T>;
+	registerSystem<T extends object>(
 		name: string,
 		definition: SystemDefinition<T>
 	): SystemConstructor<T>;
