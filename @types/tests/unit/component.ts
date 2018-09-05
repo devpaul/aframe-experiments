@@ -19,7 +19,7 @@ describe('components', () => {
 
 		it('has the expected shape', () => {
 			expect(Component).to.exist;
-			const entity: Entity = <any> document.createElement('a-entity');
+			const entity: Entity = <any>document.createElement('a-entity');
 			const component = new Component(entity, 'test', 'test');
 
 			expect(component.attrName).to.exist;

@@ -16,7 +16,7 @@ export interface PackageJsonMetadata {
 	json: PackageJson;
 }
 
-export const rootPath = join(__dirname, '..');
+export const rootPath = join(__dirname, '../..');
 export const experimentsPath = join(rootPath, 'experiments');
 export const typesPath = join(rootPath, '@types');
 export const distPath = join(rootPath, 'dist');
